@@ -6,6 +6,7 @@ Important ALgorithms to know:
 Linear Search
 Binary Search
 
+
 Bubble Sort
 Insertion Sort
 Quick Sort 
@@ -17,7 +18,6 @@ Graph
 1. Breadth First Search (BFS)
 2. Depth First Search (DFS)
 3. Shortest Path from source to all vertices **Dijkstra**
-
 
 
 Dynamic Programming:
