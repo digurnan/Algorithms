@@ -1,3 +1,5 @@
+package algos;
+
 import java.util.*;
 
 public class GraphClass {
@@ -16,66 +18,73 @@ public class GraphClass {
         hashmap.put(u, listOfVertex);
     }
 
-   public static Set<Integer> Bfs(int root){
-       Set<Integer> visited = new LinkedHashSet<>();
+   public static void Bfs(int root){
+       Set<Integer> visited = new HashSet<>();
        Queue<Integer> queue = new LinkedList<>();
        queue.add(root);
        visited.add(root);
        while (!queue.isEmpty()) {
            Integer vertex = queue.poll();
+           System.out.print(vertex + " ");
            for (Integer v : hashmap.get(vertex)) {
                if (!visited.contains(v)) {
-                   visited.add(v);
                    queue.add(v);
+                   visited.add(v);
                }
            }
        }
-       return visited;
+      // return visited;
    }
 
-    public static void BfsUtil(Integer source) {
-        Set<Integer> visited = new LinkedHashSet<Integer>();
-        Set<Integer> set = Bfs(source);
-        for(Integer vertex: set)
+    public static void Dfs(int root, Set<Integer> visited){
+        Stack<Integer> stack = new Stack<Integer>();
+        stack.push(root);
+        visited.add(root);
+        while (!stack.isEmpty()) {
+            Integer vertex = stack.pop();
             System.out.print(vertex + " ");
+            for (int dest : hashmap.get(vertex)) {
+                if (!visited.contains(dest)) {
+                    visited.add(dest);
+                    stack.push(dest);
+                }
+
+            }
+        }
+    }
+
+    public static void BfsUtil(Integer source) {
+        Set<Integer> visited = new HashSet<Integer>();
+
+        Bfs(source);
+//        for(Integer vertex: set)
+//            System.out.print(vertex + " ");
         System.out.println();
     }
 
     public static void DfsRecursive(int root, Set<Integer> visited){
-        visited.add(root);
         System.out.print(root + " ");
+        visited.add(root);
+
             for (int dest : hashmap.get(root)) {
                 if (!visited.contains(dest))
                     DfsRecursive(dest, visited);
             }
     }
     public static void DfsUtilRecursive(Integer source) {
-        Set<Integer> visited = new LinkedHashSet<>();
+        Set<Integer> visited = new HashSet<>();
         DfsRecursive(source,visited);
     }
 
 
-    public static void Dfs(int root, Set<Integer> visited){
-        Stack<Integer> stack = new Stack<Integer>();
-        stack.push(root);
-        while (!stack.isEmpty()) {
-            Integer vertex = stack.pop();
-            visited.add(vertex);
-            System.out.print(vertex + " ");
-            for (int dest : hashmap.get(vertex)) {
-                if (!visited.contains(dest))
-                    stack.push(dest);
-            }
-        }
-    }
 
     public static void DfsUtil(Integer source) {
-        Set<Integer> visited = new LinkedHashSet<>();
+        Set<Integer> visited = new HashSet<>();
         Dfs(source,visited);
     }
 
     public static void PrintConnectedComponents() {
-        Set<Integer> visited = new LinkedHashSet<>();
+        Set<Integer> visited = new HashSet<>();
         for (Map.Entry<Integer, LinkedList<Integer>> set : hashmap.entrySet()) {
 
             if(!visited.contains(set.getKey()))
@@ -113,18 +122,18 @@ public class GraphClass {
 ////        addEdge(3,2);
 //        addEdge(3,4);
 //        addEdge(4,3);
-
-        printGraphMap();
-        System.out.println("completed Print Map Function");
-
-        DfsUtil(0);
-        System.out.println("completed DFS Function");
-
-        DfsUtilRecursive(0);
-        System.out.println("completed DFS Recursive Function");
-
-        PrintConnectedComponents();
-        System.out.println("completed Connected Components Function");
+//
+//        printGraphMap();
+//        System.out.println("completed Print Map Function");
+//
+//        DfsUtil(0);
+//        System.out.println("completed DFS Function");
+//
+//        DfsUtilRecursive(0);
+//        System.out.println("completed DFS Recursive Function");
+//
+//        PrintConnectedComponents();
+//        System.out.println("completed Connected Components Function");
 
 
         BfsUtil(0);

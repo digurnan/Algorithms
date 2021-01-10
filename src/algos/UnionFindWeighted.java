@@ -1,3 +1,5 @@
+package algos;
+
 public class UnionFindWeighted {
 
     private static int[] id;

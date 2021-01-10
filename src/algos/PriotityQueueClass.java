@@ -1,3 +1,5 @@
+package algos;
+
 import java.util.PriorityQueue;
 
 public class PriotityQueueClass {

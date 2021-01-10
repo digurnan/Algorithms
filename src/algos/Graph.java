@@ -1,4 +1,4 @@
-// Java Program for union-find algorithm to detect cycle in a graph
+package algos;// Java Program for union-find algorithm to detect cycle in a graph
 
 class Graph
 {
